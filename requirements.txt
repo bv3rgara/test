@@ -1,0 +1,11 @@
+Django==1.11.8
+djangorestframework
+gunicorn
+Pillow
+raven
+coreapi
+djangorestframework-jwt
+django-cors-headers
+numpy
+openpyxl
+dateutils
