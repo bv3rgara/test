@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Empresa</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="{% static 'img/logob.png' %}"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" crossorigin="anonymous">
+        <script type="text/javascript" charset="utf8" src="{% static 'jquery/jquery-3.1.1.min.js' %}"></script>
+        <script src="{% static 'js/popper/popper.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap/bootstrap.js' %}" crossorigin="anonymous"></script>
+        <style>
+            .fondo {
+                background: url("{% static 'img/fondo-login.jpg' %}");
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style> 
+        {% block staticextra %}{% endblock %}
+    </head>
+    <body class="fondo">
+        <div class="container">
+            <div class="modal-dialog">
+                <div class="modal-content border border-dark">
+                    <div class="modal-headerx py-5 px-5 bg-dark text-white">
+                        <h4>
+                            <span class="glyphicon glyphicon-lock"></span> 
+                            {% block title %}{% endblock %} 
+                            <img class="float-right" src="{% static 'img/logow.png' %}" width="50" height="40" alt="Logo">
+                        </h4>
+                    </div>
+                    <div class="modal-body bg-white py-5 px-5">
+                        {% block content %}{% endblock %}
+                    </div>
+                    <div class="modal-footer" style="background-color: #efefef;">
+                        <p><a href="{% url 'login' %}">Volver</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

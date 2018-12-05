@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block extrajs %}
+<script>
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	});
+</script>
+{% endblock %}
+
+{% block title %}Crear usuario{% endblock %} 
+
+{% block content %}
+	{% if form.errors %}
+		<body class="fondo" language=JavaScript onLoad="mostrar_error()">
+	{% else %}
+		<body class="fondo">
+	{% endif %}
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Guardar datos">
+			<span class="glyphicon glyphicon-floppy-save mr-2"></span>Guardar
+		</button>
+	</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top" style="box-shadow: 0px 0px 10px 0px #191919;">
+    <a class="navbar-brand ml-auto" href="">
+        <img src="{% static 'img/logow.png' %}" width="50" height="40" alt="Logo" class="mr-2">EMPRESA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="#"><span class="glyphicon glyphicon-home mr-2"></span>Inicio</a>
+            <a class="nav-link" href="#">Listados</a>
+            <a class="nav-link" href="#">Graficos</a>
+            <a class="nav-link" href="{% url 'crear_empleado' %}">Nuevo</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-user mr-2"></span>{{ user.get_username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_staff %}
+                        <a class="dropdown-item btn btn-secondary" href="/admin/">
+                            <span class="glyphicon glyphicon-log-in mr-2 text-success"></span>Administrador
+                        </a>
+                    {% endif %}
+                    <a class="dropdown-item btn btn-secondary" href="{% url 'logout' %}">
+                        <span class="glyphicon glyphicon-off mr-2 text-danger"></span>Salir
+                    </a>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>

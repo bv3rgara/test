@@ -1,0 +1,41 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Empresa</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="{% static 'img/logob.png' %}"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" crossorigin="anonymous">
+        <script type="text/javascript" charset="utf8" src="{% static 'jquery/jquery-3.1.1.min.js' %}"></script>
+        <script src="{% static 'js/popper/popper.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap/bootstrap.js' %}" crossorigin="anonymous"></script>
+        {# datatable #}
+        <script type="text/javascript" src="{% static 'js/datatable/dataTables.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/datatable/dataTables.min.css' %}">
+        {# datatable #}
+        {# datapicker #}
+        <link rel="stylesheet" href="{% static 'css/datepicker/datepicker.css' %}">
+        <script type="text/javascript" src="{% static 'js/datepicker/datepicker.min.js' %}"></script>
+        {# datapicker #}
+        {# chosen #}
+        <script type="text/javascript" charset="utf8" src="{% static 'js/chosen/chosen.jquery.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/chosen/chosen.css' %}">
+        {# chosen #}
+
+        {# chart #}      
+        <script type="text/javascript" charset="utf8" src="{% static 'js/chart/Chart.bundle.min.js' %}"></script>
+        {# chart #}
+        {% block extrajs %}{% endblock %}
+    </head>
+    <body>
+        {% block navbar %}{% include "menu.html" %}{% endblock %}
+        <div class="container">
+            <h2 class="text-secondary">
+                {% block title %}Titulo{% endblock %}
+            </h2>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

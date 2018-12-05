@@ -1,0 +1,66 @@
+{% extends 'base_reset.html' %}
+
+{% block staticextra %}
+	<script type="text/javascript">
+	    function mostrar_error() {
+			alertify.error("<u><b>Error!</u></b><br>Verifique los errores...");
+	    }
+	</script>
+{% endblock %}
+
+{% block title %}Crear usuario{% endblock %} 
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+	{% if form.errors %}
+		<body class="fondo" language=JavaScript onLoad="mostrar_error()">
+	{% else %}
+		<body class="fondo">
+	{% endif %}
+	<form method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-user mr-2"></span>Nombre
+			</label>
+			<input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Ingresar nombre" autofocus>
+		</div>
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-user mr-2"></span>Apellido
+			</label>
+			<input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Ingresar apellido">
+		</div>
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-user mr-2"></span>Usuario
+			</label>
+			<input type="text" class="form-control" id="username" name="username" required placeholder="Ingresar usuario">
+		</div>
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-envelope mr-2"></span>Correo
+			</label>
+			<input type="email" class="form-control" id="email" name="email" required placeholder="Ingresar correo electrónico">
+		</div>
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-lock mr-2"></span>Contraseña
+			</label>
+			<input type="password" class="form-control" id="password1" name="password1" required placeholder="Ingresar contraseña">
+		</div>
+		<div class="form-group">
+			<label for="" class="text-secondary">
+				<span class="glyphicon glyphicon-lock mr-2"></span>Confirmar contraseña
+			</label>
+			<input type="password" class="form-control" id="password2" name="password2" required placeholder="Ingresar confirmación contraseña">
+		</div>
+		<button type="submit" class="btn btn-dark btn-block">
+			<span class="glyphicon glyphicon-send mr-2"></span>Guardar
+		</button>
+		{% if form.errors %}
+			<h6 class="text-danger">* ingrese nuevamente los datos</h6>
+		{% endif %}
+	</form>
+{% endblock %}

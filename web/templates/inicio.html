@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extrajs %}
+    <script type="text/javascript" charset="utf8" src="{% static 'js/alertify/alertify.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/alertify/themes/alertify.core.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alertify/themes/alertify.default.css' %}">
+	<script type="text/javascript">
+	    function mostrar_error() {
+			alertify.success("<u><b>Bienvenido!");
+	    }
+	</script>
+{% endblock %}
+
+{% block title %}Bienvenido{% endblock %}
+
+{% block content %}
+	<body class="fondo" language=JavaScript onLoad="mostrar_error()">
+{% endblock %}

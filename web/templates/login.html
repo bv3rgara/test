@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+	    function mostrar_error() {
+			alertify.error("<u><b>Error de acceso!</u></b><br>Ingrese nuevamente usuario y contraseña...");
+	    }
+	</script>
+	<style>
+		.fondo {
+		    background: url("{% static 'img/fondo-login.jpg' %}");
+		    height: 100%;
+		    background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+		}
+	</style>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+	{% if form.errors %}
+		<body class="fondo" language=JavaScript onLoad="mostrar_error()">
+	{% else %}
+		<body class="fondo">
+	{% endif %}
+	<div class="modal-dialog">
+		<div class="modal-content border border-dark">
+			<div class="modal-headerx py-5 px-5 bg-dark text-white">
+				<h4>
+					<img class="float-right" src="{% static 'img/logow.png' %}" width="50" height="40" alt="Logo">
+					<span class="glyphicon glyphicon-user mr-2"></span>Iniciar sesión
+				</h4>
+			</div>
+			<div class="modal-body bg-white py-5 px-5">
+				<form method="post" role="form">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="usrname" class="text-secondary">
+							<span class="glyphicon glyphicon-user mr-2"></span>Usuario
+						</label>
+						<input required type="text" class="form-control" name="username" id="username" placeholder="Ingresar usuario" autofocus>
+					</div>
+					<div class="form-group">
+						<label for="psw" class="text-secondary">
+							<span class="glyphicon glyphicon-lock mr-2"></span>Contraseña
+						</label>
+						<input required type="password" class="form-control" name="password" id="psw" placeholder="Ingresar contraseña">
+					</div>
+					<div class="checkbox">
+						<label class="text-secondary">
+							<input type="checkbox" checked>Recordar
+						</label>
+					</div>
+					<button type="submit" class="btn btn-dark btn-block">
+						<span class="glyphicon glyphicon-log-in mr-2"></span>Acceder
+					</button>
+				</form>
+			</div>
+			<div class="modal-footer" style="background-color: #efefef;">
+				<p><a href="{% url 'password_reset' %}">¿Has olvidado la contraseña?</a></p>
+				<p class="text-secondary">- ¿No eres miembro? <a href="{% url 'registrar' %}">Registrarse</a></p>
+			</div>
+		</div>
+	</div>
+{% endblock %}
