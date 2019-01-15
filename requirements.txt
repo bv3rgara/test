@@ -1,4 +1,4 @@
-Django==1.11.8
+Django>=1.11.8,<2.0
 djangorestframework
 gunicorn
 Pillow
